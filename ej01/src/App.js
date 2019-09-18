@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Switch, Link} from 'react-router-dom';
+import Clock from './components/Clock';
+import NoClock from './components/NoClock';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/noclock"> No clock </Link>
+              </li>
+              <li>
+                <Link to="/"> Clock </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <Switch>
+          <Route exact path ="/" component = {Clock}/>
+          <Route path = "/noclock" component = {NoClock}/>
+        </Switch>
+
+      </div>
+    );
+  }
 }
 
 export default App;
